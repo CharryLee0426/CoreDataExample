@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct CoreDataExampleApp: App {
+    // inject the data model to the app
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
